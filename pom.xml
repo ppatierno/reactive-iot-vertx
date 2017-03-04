@@ -6,14 +6,15 @@
 
   <groupId>io.vertx</groupId>
   <artifactId>reactive-iot-vertx</artifactId>
-  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
   <modules>
     <module>mqtt-server</module>
     <module>amqp-proton</module>
     <module>amqp-bridge</module>
     <module>kafka-client</module>
+    <module>bom</module>
   </modules>
 
 </project>

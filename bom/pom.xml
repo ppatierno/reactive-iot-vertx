@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>io.vertx</groupId>
+    <artifactId>reactive-iot-vertx</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>reactive-iot-vertx-bom</artifactId>
+  <packaging>pom</packaging>
+
+  <properties>
+    <vertx-amqp-bridge.version>3.4.0.Beta1</vertx-amqp-bridge.version>
+    <vertx-amqp-proton.version>3.4.0.Beta1</vertx-amqp-proton.version>
+    <vertx-kafka-client.version>3.4.0.Beta1</vertx-kafka-client.version>
+    <vertx-mqtt.version>3.4.0.Beta1</vertx-mqtt.version>
+  </properties>
+
+</project>

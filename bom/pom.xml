@@ -13,10 +13,28 @@
   <packaging>pom</packaging>
 
   <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <vertx-amqp-bridge.version>3.4.0.Beta1</vertx-amqp-bridge.version>
     <vertx-amqp-proton.version>3.4.0.Beta1</vertx-amqp-proton.version>
     <vertx-kafka-client.version>3.4.0.Beta1</vertx-kafka-client.version>
     <vertx-mqtt.version>3.4.0.Beta1</vertx-mqtt.version>
+    <slf4j.version>1.7.24</slf4j.version>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
 </project>

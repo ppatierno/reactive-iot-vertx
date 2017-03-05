@@ -36,11 +36,11 @@ public class Main {
     router.route().handler(StaticHandler.create().setCachingEnabled(false));
 
     HttpServer httpServer = vertx.createHttpServer();
-    httpServer.requestHandler(router::accept).listen(8080, ar -> {
-      if (ar.succeeded()) {
-        System.out.println("Http server started");
+    httpServer.requestHandler(router::accept).listen(8080, done -> {
+      if (done.succeeded()) {
+        LOG.info("HTTP server started on port {}", done.result().actualPort());
       } else {
-        ar.cause().printStackTrace();
+        LOG.error("HTTP server not started", done.cause());
       }
     });
 

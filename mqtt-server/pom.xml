@@ -15,6 +15,10 @@
   <dependencies>
     <dependency>
       <groupId>io.vertx</groupId>
+      <artifactId>vertx-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.vertx</groupId>
       <artifactId>vertx-mqtt-server</artifactId>
       <version>${vertx.version}</version>
     </dependency>

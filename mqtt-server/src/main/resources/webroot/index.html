@@ -1,0 +1,19 @@
+<html>
+<head>
+  <script src="sockjs.min.js"></script>
+  <script src="vertxbus.js"></script>
+<body>
+<h1>MQTT messages dashboard</h1>
+
+<script>
+    var eb = new vertx.EventBus("http://" + location.host + "/eventbus");
+    eb.onopen = function() {
+      console.log("open");
+      eb.registerHandler("dashboard", function(data) {
+        console.log(data);
+      });
+    };
+  </script>
+
+</body>
+</html>

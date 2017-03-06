@@ -18,9 +18,9 @@ import java.util.Collections;
 /**
  * Created by ppatiern on 04/03/17.
  */
-public class Main {
+public class Server {
 
-  private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+  private static final Logger LOG = LoggerFactory.getLogger(Server.class);
 
   private static Vertx vertx;
 
@@ -36,17 +36,20 @@ public class Main {
     router.route().handler(StaticHandler.create().setCachingEnabled(false));
 
     HttpServer httpServer = vertx.createHttpServer();
-    httpServer.requestHandler(router::accept).listen(8080, done -> {
-      if (done.succeeded()) {
-        LOG.info("HTTP server started on port {}", done.result().actualPort());
-      } else {
-        LOG.error("HTTP server not started", done.cause());
-      }
+    httpServer
+      .requestHandler(router::accept)
+      .listen(8080, done -> {
+
+        if (done.succeeded()) {
+          LOG.info("HTTP server started on port {}", done.result().actualPort());
+        } else {
+          LOG.error("HTTP server not started", done.cause());
+        }
     });
 
-    MqttServer server = MqttServer.create(vertx);
-    server
-      .endpointHandler(Main::endpointHandler)
+    MqttServer mqttServer = MqttServer.create(vertx);
+    mqttServer
+      .endpointHandler(Server::endpointHandler)
       .listen(done -> {
 
         if (done.succeeded()) {
@@ -54,7 +57,6 @@ public class Main {
         } else {
           LOG.error("MQTT server not started", done.cause());
         }
-
       });
   }
 

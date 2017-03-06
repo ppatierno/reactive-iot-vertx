@@ -4,6 +4,8 @@ import io.vertx.core.Vertx;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -11,6 +13,8 @@ import java.io.IOException;
  * Created by ppatiern on 06/03/17.
  */
 public class Publisher {
+
+  private static final Logger LOG = LoggerFactory.getLogger(Publisher.class);
 
   private static final String MQTT_SERVER_HOST = "localhost";
   private static final int MQTT_SERVER_PORT = 1883;

@@ -12,7 +12,6 @@
   <modules>
     <module>mqtt-server</module>
     <module>amqp-proton</module>
-    <module>amqp-bridge</module>
     <module>kafka-client</module>
     <module>bom</module>
   </modules>

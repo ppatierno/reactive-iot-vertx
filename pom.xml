@@ -13,6 +13,7 @@
     <module>mqtt-server</module>
     <module>amqp-proton</module>
     <module>kafka-client</module>
+    <module>mqtt-to-kafka</module>
     <module>bom</module>
   </modules>
 

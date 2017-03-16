@@ -24,6 +24,7 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -63,5 +64,12 @@ public class Producer {
 
       });
     });
+
+    try {
+      System.in.read();
+      vertx.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

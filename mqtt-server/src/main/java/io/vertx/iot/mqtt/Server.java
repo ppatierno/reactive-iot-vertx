@@ -29,6 +29,7 @@ import io.vertx.mqtt.MqttServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.Collections;
 
 /**
@@ -77,6 +78,13 @@ public class Server {
           LOG.error("MQTT server not started", done.cause());
         }
       });
+
+    try {
+      System.in.read();
+      vertx.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   private static void endpointHandler(MqttEndpoint endpoint) {

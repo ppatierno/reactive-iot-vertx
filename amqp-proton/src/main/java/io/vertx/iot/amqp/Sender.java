@@ -26,6 +26,8 @@ import org.apache.qpid.proton.message.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+
 /**
  * Created by ppatiern on 06/03/17.
  */
@@ -68,5 +70,12 @@ public class Sender {
       });
 
     });
+
+    try {
+      System.in.read();
+      vertx.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

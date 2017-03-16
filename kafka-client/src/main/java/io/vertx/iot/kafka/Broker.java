@@ -78,19 +78,24 @@ public class Broker {
         }
       });
 
+      Properties config = new Properties();
+      config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, String.format("%s:%d", KAFKA_HOST, KAFKA_PORT));
+      config.put(ConsumerConfig.GROUP_ID_CONFIG, "mygroup");
+      config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+
+      KafkaConsumer<String, String> consumer = KafkaConsumer.create(vertx, config, String.class, String.class);
+      consumer.handler(record -> {
+        vertx.eventBus().publish("dashboard", record.value());
+      });
+      consumer.subscribe("mytopic");
+
+      System.in.read();
+      kafkaCluster.shutdown();
+      vertx.close();
+
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    Properties config = new Properties();
-    config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, String.format("%s:%d", KAFKA_HOST, KAFKA_PORT));
-    config.put(ConsumerConfig.GROUP_ID_CONFIG, "mygroup");
-    config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-
-    KafkaConsumer<String, String> consumer = KafkaConsumer.create(vertx, config, String.class, String.class);
-    consumer.handler(record -> {
-      vertx.eventBus().publish("dashboard", record.value());
-    });
-    consumer.subscribe("mytopic");
   }
 }
